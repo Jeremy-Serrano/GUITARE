@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NS_BASE_AZURE" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="C_BOIS">
+    <Key>
+      <PropertyRef Name="ID_BOIS" />
+    </Key>
+    <Property Name="ID_BOIS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nom" Type="String" MaxLength="32" FixedLength="true" Unicode="true" />
+    <Property Name="Origine" Type="String" MaxLength="32" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="C_CLIENT">
+    <Key>
+      <PropertyRef Name="ID_CLIENT" />
+    </Key>
+    <Property Name="ID_CLIENT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nom" Type="String" MaxLength="32" FixedLength="true" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="32" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="C_GUITARE">
+    <Key>
+      <PropertyRef Name="ID_GUITARE" />
+    </Key>
+    <Property Name="ID_GUITARE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdClient" Type="Int32" />
+    <Property Name="IdVibrato" Type="Int32" />
+    <Property Name="IdBois_Corps" Type="Int32" />
+    <Property Name="IdBois_Manche" Type="Int32" />
+    <Property Name="IdBois_Touche" Type="Int32" />
+    <Property Name="IdMicro_Neck" Type="Int32" />
+    <Property Name="IdMicro_Central" Type="Int32" />
+    <Property Name="IdMicro_Bridge" Type="Int32" />
+    <NavigationProperty Name="Le_Bois_Corps" Relationship="Self.FK_GUITARE_BOIS" FromRole="GUITARE" ToRole="BOIS" />
+    <NavigationProperty Name="Le_Bois_Manche" Relationship="Self.FK_GUITARE_BOIS1" FromRole="GUITARE" ToRole="BOIS" />
+    <NavigationProperty Name="Le_Bois_Touche" Relationship="Self.FK_GUITARE_BOIS2" FromRole="GUITARE" ToRole="BOIS" />
+    <NavigationProperty Name="Le_Proprietaire" Relationship="Self.FK_GUITARE_CLIENT" FromRole="GUITARE" ToRole="CLIENT" />
+    <NavigationProperty Name="Le_Micro_Neck" Relationship="Self.FK_GUITARE_MICRO" FromRole="GUITARE" ToRole="MICRO" />
+    <NavigationProperty Name="Le_Micro_Central" Relationship="Self.FK_GUITARE_MICRO1" FromRole="GUITARE" ToRole="MICRO" />
+    <NavigationProperty Name="Le_Micro_Bridge" Relationship="Self.FK_GUITARE_MICRO2" FromRole="GUITARE" ToRole="MICRO" />
+    <NavigationProperty Name="Le_Vibrato" Relationship="Self.FK_GUITARE_VIBRATO" FromRole="GUITARE" ToRole="VIBRATO" />
+  </EntityType>
+  <EntityType Name="C_MICRO">
+    <Key>
+      <PropertyRef Name="ID_MICRO" />
+    </Key>
+    <Property Name="ID_MICRO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nom" Type="String" MaxLength="32" FixedLength="true" Unicode="true" />
+    <Property Name="Reference" Type="String" MaxLength="32" FixedLength="true" Unicode="true" />
+    <Property Name="Marque" Type="String" MaxLength="32" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="C_VIBRATO">
+    <Key>
+      <PropertyRef Name="ID_VIBRATO" />
+    </Key>
+    <Property Name="ID_VIBRATO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nom" Type="String" MaxLength="32" FixedLength="true" Unicode="true" />
+    <Property Name="Modele" Type="String" MaxLength="32" FixedLength="true" Unicode="true" />
+    <Property Name="Marque" Type="String" MaxLength="32" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_GUITARE_BOIS">
+    <End Role="BOIS" Type="NS_BASE_AZURE.C_BOIS" Multiplicity="0..1" />
+    <End Role="GUITARE" Type="NS_BASE_AZURE.C_GUITARE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BOIS">
+        <PropertyRef Name="ID_BOIS" />
+      </Principal>
+      <Dependent Role="GUITARE">
+        <PropertyRef Name="IdBois_Corps" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GUITARE_BOIS1">
+    <End Role="BOIS" Type="NS_BASE_AZURE.C_BOIS" Multiplicity="0..1" />
+    <End Role="GUITARE" Type="NS_BASE_AZURE.C_GUITARE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BOIS">
+        <PropertyRef Name="ID_BOIS" />
+      </Principal>
+      <Dependent Role="GUITARE">
+        <PropertyRef Name="IdBois_Manche" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GUITARE_BOIS2">
+    <End Role="BOIS" Type="NS_BASE_AZURE.C_BOIS" Multiplicity="0..1" />
+    <End Role="GUITARE" Type="NS_BASE_AZURE.C_GUITARE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BOIS">
+        <PropertyRef Name="ID_BOIS" />
+      </Principal>
+      <Dependent Role="GUITARE">
+        <PropertyRef Name="IdBois_Touche" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GUITARE_CLIENT">
+    <End Role="CLIENT" Type="NS_BASE_AZURE.C_CLIENT" Multiplicity="0..1" />
+    <End Role="GUITARE" Type="NS_BASE_AZURE.C_GUITARE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENT">
+        <PropertyRef Name="ID_CLIENT" />
+      </Principal>
+      <Dependent Role="GUITARE">
+        <PropertyRef Name="IdClient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GUITARE_MICRO">
+    <End Role="MICRO" Type="NS_BASE_AZURE.C_MICRO" Multiplicity="0..1" />
+    <End Role="GUITARE" Type="NS_BASE_AZURE.C_GUITARE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MICRO">
+        <PropertyRef Name="ID_MICRO" />
+      </Principal>
+      <Dependent Role="GUITARE">
+        <PropertyRef Name="IdMicro_Neck" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GUITARE_MICRO1">
+    <End Role="MICRO" Type="NS_BASE_AZURE.C_MICRO" Multiplicity="0..1" />
+    <End Role="GUITARE" Type="NS_BASE_AZURE.C_GUITARE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MICRO">
+        <PropertyRef Name="ID_MICRO" />
+      </Principal>
+      <Dependent Role="GUITARE">
+        <PropertyRef Name="IdMicro_Central" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GUITARE_MICRO2">
+    <End Role="MICRO" Type="NS_BASE_AZURE.C_MICRO" Multiplicity="0..1" />
+    <End Role="GUITARE" Type="NS_BASE_AZURE.C_GUITARE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MICRO">
+        <PropertyRef Name="ID_MICRO" />
+      </Principal>
+      <Dependent Role="GUITARE">
+        <PropertyRef Name="IdMicro_Bridge" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GUITARE_VIBRATO">
+    <End Role="VIBRATO" Type="NS_BASE_AZURE.C_VIBRATO" Multiplicity="0..1" />
+    <End Role="GUITARE" Type="NS_BASE_AZURE.C_GUITARE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VIBRATO">
+        <PropertyRef Name="ID_VIBRATO" />
+      </Principal>
+      <Dependent Role="GUITARE">
+        <PropertyRef Name="IdVibrato" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="C_BASE_AZURE" annotation:LazyLoadingEnabled="true" a:TypeAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+    <EntitySet Name="Les_Bois" EntityType="NS_BASE_AZURE.C_BOIS" />
+    <EntitySet Name="Les_Clients" EntityType="NS_BASE_AZURE.C_CLIENT" />
+    <EntitySet Name="Les_Guitares" EntityType="NS_BASE_AZURE.C_GUITARE" />
+    <EntitySet Name="Les_Micros" EntityType="NS_BASE_AZURE.C_MICRO" />
+    <EntitySet Name="Les_Vibratos" EntityType="NS_BASE_AZURE.C_VIBRATO" />
+    <AssociationSet Name="FK_GUITARE_BOIS" Association="Self.FK_GUITARE_BOIS">
+      <End Role="BOIS" EntitySet="Les_Bois" />
+      <End Role="GUITARE" EntitySet="Les_Guitares" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GUITARE_BOIS1" Association="Self.FK_GUITARE_BOIS1">
+      <End Role="BOIS" EntitySet="Les_Bois" />
+      <End Role="GUITARE" EntitySet="Les_Guitares" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GUITARE_BOIS2" Association="Self.FK_GUITARE_BOIS2">
+      <End Role="BOIS" EntitySet="Les_Bois" />
+      <End Role="GUITARE" EntitySet="Les_Guitares" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GUITARE_CLIENT" Association="Self.FK_GUITARE_CLIENT">
+      <End Role="CLIENT" EntitySet="Les_Clients" />
+      <End Role="GUITARE" EntitySet="Les_Guitares" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GUITARE_MICRO" Association="Self.FK_GUITARE_MICRO">
+      <End Role="MICRO" EntitySet="Les_Micros" />
+      <End Role="GUITARE" EntitySet="Les_Guitares" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GUITARE_MICRO1" Association="Self.FK_GUITARE_MICRO1">
+      <End Role="MICRO" EntitySet="Les_Micros" />
+      <End Role="GUITARE" EntitySet="Les_Guitares" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GUITARE_MICRO2" Association="Self.FK_GUITARE_MICRO2">
+      <End Role="MICRO" EntitySet="Les_Micros" />
+      <End Role="GUITARE" EntitySet="Les_Guitares" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GUITARE_VIBRATO" Association="Self.FK_GUITARE_VIBRATO">
+      <End Role="VIBRATO" EntitySet="Les_Vibratos" />
+      <End Role="GUITARE" EntitySet="Les_Guitares" />
+    </AssociationSet>
+    <FunctionImport Name="DELETE_ALL_BOIS" />
+    <FunctionImport Name="DELETE_ALL_CLIENT" />
+    <FunctionImport Name="DELETE_ALL_GUITARE" />
+    <FunctionImport Name="DELETE_ALL_MICRO" />
+    <FunctionImport Name="DELETE_ALL_VIBRATO" />
+  </EntityContainer>
+</Schema>

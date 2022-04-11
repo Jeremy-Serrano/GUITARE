@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitemanifest>
+  <IisApp path="D:\DOCUMENTS_DE_JEAN_LOUIS\FORMATION\SIO2-PRJ\2021-2022\PRJ_GUITARE\PRJ_GUITARE\WS_GUITARE\obj\Release\Package\PackageTmp" />
+  <setAcl path="D:\DOCUMENTS_DE_JEAN_LOUIS\FORMATION\SIO2-PRJ\2021-2022\PRJ_GUITARE\PRJ_GUITARE\WS_GUITARE\obj\Release\Package\PackageTmp" setAclResourceType="Directory" />
+  <setAcl path="D:\DOCUMENTS_DE_JEAN_LOUIS\FORMATION\SIO2-PRJ\2021-2022\PRJ_GUITARE\PRJ_GUITARE\WS_GUITARE\obj\Release\Package\PackageTmp" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
+</sitemanifest>

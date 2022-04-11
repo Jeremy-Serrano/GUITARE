@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="NS_BASE_AZUREStoreContainer" CdmEntityContainer="C_BASE_AZURE">
+    <EntitySetMapping Name="Les_Bois">
+      <EntityTypeMapping TypeName="NS_BASE_AZURE.C_BOIS">
+        <MappingFragment StoreEntitySet="BOIS">
+          <ScalarProperty Name="ID_BOIS" ColumnName="ID_BOIS" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Origine" ColumnName="Origine" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Les_Clients">
+      <EntityTypeMapping TypeName="NS_BASE_AZURE.C_CLIENT">
+        <MappingFragment StoreEntitySet="CLIENT">
+          <ScalarProperty Name="ID_CLIENT" ColumnName="ID_CLIENT" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Les_Guitares">
+      <EntityTypeMapping TypeName="NS_BASE_AZURE.C_GUITARE">
+        <MappingFragment StoreEntitySet="GUITARE">
+          <ScalarProperty Name="ID_GUITARE" ColumnName="ID_GUITARE" />
+          <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+          <ScalarProperty Name="IdVibrato" ColumnName="IdVibrato" />
+          <ScalarProperty Name="IdBois_Corps" ColumnName="IdBois_Corps" />
+          <ScalarProperty Name="IdBois_Manche" ColumnName="IdBois_Manche" />
+          <ScalarProperty Name="IdBois_Touche" ColumnName="IdBois_Touche" />
+          <ScalarProperty Name="IdMicro_Neck" ColumnName="IdMicro_Neck" />
+          <ScalarProperty Name="IdMicro_Central" ColumnName="IdMicro_Central" />
+          <ScalarProperty Name="IdMicro_Bridge" ColumnName="IdMicro_Bridge" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Les_Micros">
+      <EntityTypeMapping TypeName="NS_BASE_AZURE.C_MICRO">
+        <MappingFragment StoreEntitySet="MICRO">
+          <ScalarProperty Name="ID_MICRO" ColumnName="ID_MICRO" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Reference" ColumnName="Reference" />
+          <ScalarProperty Name="Marque" ColumnName="Marque" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Les_Vibratos">
+      <EntityTypeMapping TypeName="NS_BASE_AZURE.C_VIBRATO">
+        <MappingFragment StoreEntitySet="VIBRATO">
+          <ScalarProperty Name="Marque" ColumnName="Marque" />
+          <ScalarProperty Name="ID_VIBRATO" ColumnName="ID_VIBRATO" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Modele" ColumnName="Modele" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="DELETE_ALL_BOIS" FunctionName="NS_BASE_AZURE.Store.DELETE_ALL_BOIS" />
+    <FunctionImportMapping FunctionImportName="DELETE_ALL_CLIENT" FunctionName="NS_BASE_AZURE.Store.DELETE_ALL_CLIENT" />
+    <FunctionImportMapping FunctionImportName="DELETE_ALL_GUITARE" FunctionName="NS_BASE_AZURE.Store.DELETE_ALL_GUITARE" />
+    <FunctionImportMapping FunctionImportName="DELETE_ALL_MICRO" FunctionName="NS_BASE_AZURE.Store.DELETE_ALL_MICRO" />
+    <FunctionImportMapping FunctionImportName="DELETE_ALL_VIBRATO" FunctionName="NS_BASE_AZURE.Store.DELETE_ALL_VIBRATO" />
+  </EntityContainerMapping>
+</Mapping>
